@@ -1,0 +1,83 @@
+<meta charset="utf-8">
+<h1>Calculadora de volume de sólidos</h1> 
+<br>
+<big><h2>Escolha qual sólido calcular:</h2></big>
+<br>
+
+<button id="cubo">CUBO</button>
+<button id="prisma">PRISMA</button>
+<button id="piramide">PIRÂMIDE</button>
+<button id="cilindro">CILINDRO</button>
+<button id="cone">CONE</button>
+<button id="esfera">ESFERA</button>
+<button id="troncoDaPiramide">TRONCO (DA PIRÂMIDE)</button>
+<button id="troncoDoCone">TRONCO (DO CONE)</button>
+
+<script>
+	function pulaLinha() {
+		document.write("<br><br>");
+	}
+	function mostra(frase) {
+		document.write(frase);
+		pulaLinha();
+	}
+	function calculaCubo() {
+		var aresta = parseFloat(prompt("Informe o valor da aresta"));
+		mostra("O volume do cubo é " + Math.pow(aresta, 3))
+	}
+	function calculaPrisma() {
+		var base = parseFloat(prompt("Informe o valor da base"))
+		var altura = parseFloat(prompt("Informe o valor da altura"))
+		mostra("O volume do prisma é " + base*altura)
+	}
+		function calculaPiramide() {
+		var base = parseFloat(prompt("Informe o valor da base"))
+		var altura = parseFloat(prompt("Informe o valor da altura"))
+		mostra("O volume da pirâmide é " + base*altura/3)
+	}
+	function calculaCilindro() {
+		var raio = parseFloat(prompt("Informe o valor do raio da base"))
+		var altura = parseFloat(prompt("Informe o valor da altura"))
+		mostra("O volume do cilindro é " + Math.pow(raio, 2)*Math.PI*altura)
+	}
+	function calculaCone() {
+		var raio = parseFloat(prompt("Informe o valor do raio da base"))
+		var altura = parseFloat(prompt("Informe o valor da altura"))
+		mostra("O volume do cone é " + Math.pow(raio, 2)*Math.PI*altura/3)
+	}
+	function calculaEsfera() {
+		var raio = parseFloat(prompt("Informe o valor do raio"))
+		mostra("O volume da esfera é " + 4*Math.PI*Math.pow(raio, 3)/3)
+	}
+	function calculaTroncoDaPiramide() {
+		var baseMa = parseFloat(prompt("Informe o valor da base maior"))
+		var baseme = parseFloat(prompt("Informe o valor da base menor"))
+		var altura = parseFloat(prompt("Informe o valor da altura"))
+		mostra("O volume do tronco da pirâmide é " + altura*(baseMa+baseme+Math.sqrt(baseMa*baseme))/3)
+	}
+	function calculaTroncoDoCone() {
+		var raioMa = parseFloat(prompt("Informe o valor do raio da base maior"))
+		var raiome = parseFloat(prompt("Informe o valor do raio da base menor"))
+		var altura = parseFloat(prompt("Informe o valor da altura"))
+		mostra("O volume do tronco do cone é " + Math.PI*altura*(Math.pow(raioMa, 2)+raioMa*raiome+Math.pow(raiome, 2)) / 3)
+	}
+
+	var cubo = document.querySelector("#cubo")
+	cubo.onclick = calculaCubo;
+	var prisma = document.querySelector("#prisma")
+	prisma.onclick = calculaPrisma;
+	var piramide = document.querySelector("#piramide")
+	piramide.onclick = calculaPiramide;
+	var cilindro = document.querySelector("#cilindro")
+	cilindro.onclick = calculaCilindro;
+	var cone = document.querySelector("#cone")
+	cone.onclick = calculaCone;
+	var esfera = document.querySelector("#esfera")
+	esfera.onclick = calculaEsfera;
+	var troncoDaPiramide = document.querySelector("#troncoDaPiramide")
+	troncoDaPiramide.onclick = calculaTroncoDaPiramide;
+	var troncoDoCone = document.querySelector("#troncoDoCone")
+	troncoDoCone.onclick = calculaTroncoDoCone;
+//Cubo = L³, Prisma = Ab*h, Cilidnro = r²*pi*h, Cone = r²*pi*h/3, Pirâmide = Ab*h / 3, Esfera = 4*pi*r³ / 3, Tronco da pirâmide = h*(AB+Ab+srqt(AB*Ab)) / 3, Tronco do cone = pi*h*(R²+Rr+r²) / 3
+
+</script>

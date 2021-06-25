@@ -1,0 +1,160 @@
+
+<button id="comeca">COMEÇAR JOGO</button>
+
+<canvas width="1350" height="600"></canvas>
+
+<script>
+	/*NIVEIS DE PING PONG:
+A BARRA ADVERSÁRIA ANDA DE CIMA PARA BAIXO
+A BARRA ADVERSÁRIA ACOMPANHA A BOLA E É UM TIPO DE RECORDE
+
+PLACAR EM CIMA*/
+	//musica = document.querySelector("#music")
+
+    var tela = document.querySelector('canvas');
+    var pincel = tela.getContext('2d');
+    pincel.fillStyle = 'white';
+    pincel.fillRect(0, 0, 1350, 600);
+
+    function desenhaCirculo(x, y, z) {
+
+        pincel.fillStyle = 'blue';
+        pincel.beginPath();
+        pincel.arc(x, y, z, 0, 2 * Math.PI);
+        pincel.fill();
+    }
+
+    function limpaTelaBolinha() {
+
+        pincel.clearRect(20, 0, 1350, 600);
+    }    
+    function limpaTelaBarra() {
+
+        pincel.clearRect(0, 0, 20, 600);
+    }
+
+    var x = 650;
+
+    var y = 20;
+
+    var sentidoX = 10;
+
+    var sentidoY = 10;
+
+    var raio = 20;
+
+    var bateu = true
+
+    var yb = 300
+
+
+
+    function vaiLogo(evento) {
+    	window.yb = evento.pageY - tela.offsetTop
+	    if(perdeu_mesmo == false)
+	    	if(bateu) {
+	    		limpaTelaBarra();
+	    		pincel.fillStyle = 'black'
+	    		if(yb >= 50 && yb<=550) {
+	    			pincel.fillRect(0, yb-50, 20, 100)
+	    		} else if (yb < 50) {
+	    			pincel.fillRect(0, 0, 20, 100)
+	    		} else {
+	    			pincel.fillRect(0, 500, 20, 100)
+	    		}
+	    	}
+    	console.log(y)
+    	console.log(yb)
+    	if (y >= yb-50 && y <= yb+50) {
+    		console.log("Isso aí")
+    	}
+    }
+    //vaiLogo()
+            
+
+    var perdeu = false
+    var perdeu_mesmo = true 	
+    var pontos = 0
+
+	tela.onmousemove = vaiLogo     
+    console.log(yb)
+    function atualizaTela() {
+
+
+        limpaTelaBolinha()
+
+        if (perdeu_mesmo == false) {
+		    while(x >= 40 && perdeu == false) {
+		        if(x >= 1310) {
+		            sentidoX = -10;
+		        } else if (x <= 40) {
+		            sentidoX = 10;
+		        }
+
+		        if(y > 560) {
+		            sentidoY = -10;
+		        } else if (y < 40) {
+		            sentidoY = 10;
+		        }
+		        if (x == 40) {
+		        	pontos++
+		        	//beep(523, 500)
+		        }
+		        desenhaCirculo(x, y, raio);
+		        pincel.fillStyle = 'black'
+		        pincel.font = '17px Verdana'
+		        pincel.fillText(pontos, 650, 20)
+		        break
+	        }
+	        /*if (des) {
+	        	desenhaCirculo(x, y, raio);
+	        }*/
+	        x = x + sentidoX;
+	        y = y + sentidoY
+
+	        pincel.fillStyle = 'black'
+	        pincel.fillRect(1330, y-50, 20, 100)
+    	}
+    }
+    /*function mostra() {
+    	console.log(x)
+    }*/
+
+    setInterval(atualizaTela, 10);
+    //setInterval(mostra, 200);
+    /*function verifica() {
+    	if (x > 100 && y+20 < yb && y-20 > yb+100) {
+    		alert("perdeu")
+    	}
+    	console.log("a")
+    }*/
+
+    //tela.onclick = desenhaBarra
+
+    function consol() {
+    	console.log(yb)
+    }
+    setInterval(consol, 1000)
+    function verifica() {
+    	var perdeu = true
+    	if (x == 40 && y+20 >= yb-50 && y-20 <= yb+50) {
+    		perdeu = false
+    	}
+    	if (perdeu == true && x == 40 && perdeu_mesmo == false) {
+    		alert("Perdeu!")
+    		alert("Você fez " + pontos)
+    		pincel.clearRect(0, 0, 1350, 600)
+    		pontos = 0
+    		x = 650
+    		sentidoX = 100
+    		perdeu_mesmo = true
+    	}
+    }    
+    setInterval(verifica, 1);
+    var inicia = document.querySelector("#comeca")
+    function comeco() {
+    	perdeu_mesmo = false
+    } 
+    inicia.onclick = comeco
+    //ATUALIZAÇÕES: TEM AS MEDIDAS DE COLISÃO DA BARRA MAS NÃO DA BOLINHA | COLOCAR BOTÃO DE INÍCIO NO MEIO DA TELA
+</script>
