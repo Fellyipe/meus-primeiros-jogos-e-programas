@@ -1,0 +1,186 @@
+<canvas width="1350" height="625"></canvas>
+
+<script>
+    var tela = document.querySelector('canvas');
+    var pincel = tela.getContext('2d');
+    
+    pincel.fillStyle = "black"    
+    pincel.fillRect(0, 530, 1350, 5)   
+
+    var diminui = false
+	var cima = 38;
+	var pula = false	
+	var y = 0
+	var v = 0
+	var z = 0
+	var vel = 63
+	var xa = 1350
+	var xb = 1350
+	var po = 0
+	var pov = true
+	var pontos = 0
+	var perdeu = false
+    function desenhaDino() {
+
+    	pincel.clearRect(0, 100, 1350, 430)
+    	pincel.clearRect(0, 540, 1350, 805)
+		if(pula) {
+			y = 15 + z
+			if (v >= 10) {
+				diminui = true
+
+			} else {
+				z += 15
+			}
+			if (diminui) {
+				z -= 15
+			}
+			if (v == 21) {
+				z = 0
+				v = 0
+				y = 0
+				pula = false
+				diminui = false
+			}
+			v++
+		}
+	    var x = 360
+	    pincel.fillStyle = 'grey';
+	    pov = true
+	    if (po >= 0 && po < 2 && pov == true) {
+		    pincel.fillRect(100, 100+x-y, 5, 5*6)
+		    pincel.fillRect(105, 110+x-y, 5, 5*5)
+		    pincel.fillRect(110, 115+x-y, 5, 5*5)
+		    pincel.fillRect(115, 120+x-y, 5, 5*5)
+		    pincel.fillRect(120, 120+x-y, 5, 5*6)
+		    pincel.fillRect(125, 115+x-y, 5, 5*11)
+		    pincel.fillRect(130, 110+x-y, 5, 5*10)
+		    pincel.fillRect(130, 165+x-y, 5, 5)
+		    pincel.fillRect(135, 110+x-y, 5, 5*9)
+		    pincel.fillRect(137, 105+x-y, 8, 5*9)
+		    pincel.fillRect(145, 100+x-y, 5, 5*11)
+		    pincel.fillRect(150, 70+x-y, 5, 5*20)
+		    pincel.fillRect(155, 65+x-y, 5, 5*16)
+		    pincel.fillRect(155, 165+x-y, 5, 5)
+		    pincel.fillRect(160, 65+x-y, 5, 7)
+		    pincel.fillRect(160, 77+x-y, 5, 5*13-2)
+		    pincel.fillRect(165, 65+x-y, 5, 5*13)
+		    pincel.fillRect(170, 65+x-y, 5, 5*7)
+		    pincel.fillRect(175, 65+x-y, 5*4, 5*5)
+		    pincel.fillRect(175, 95+x-y, 5*3, 5)
+		    pincel.fillRect(195, 70+x-y, 5, 5*4)
+		    pincel.fillRect(170, 110+x-y, 5, 5)
+		    pincel.fillRect(175, 110+x-y, 5, 5*2)
+		    po++
+		    pov = false
+		}
+
+		if (po >= 2 && po < 4 && pov == true) {
+		    pincel.fillRect(100, 100+x-y, 5, 5*6)
+		    pincel.fillRect(105, 110+x-y, 5, 5*5)
+		    pincel.fillRect(110, 115+x-y, 5, 5*5)
+		    pincel.fillRect(115, 120+x-y, 5, 5*5)
+		    pincel.fillRect(120, 120+x-y, 5, 5*6)
+		    pincel.fillRect(125, 115+x-y, 5, 5*11)
+		    pincel.fillRect(130, 110+x-y, 5, 5*10)
+		    pincel.fillRect(130, 165+x-y, 5, 5)
+		    pincel.fillRect(135, 110+x-y, 5, 5*9)
+		    pincel.fillRect(137, 105+x-y, 8, 5*9)
+		    pincel.fillRect(145, 100+x-y, 5, 5*10)
+		    pincel.fillRect(150, 70+x-y, 5, 5*17)
+		    pincel.fillRect(155, 65+x-y, 5, 5*16)
+		    pincel.fillRect(150, 150+x-y, 5*3, 5)
+		    pincel.fillRect(160, 65+x-y, 5, 7)
+		    pincel.fillRect(160, 77+x-y, 5, 5*13-2)
+		    pincel.fillRect(165, 65+x-y, 5, 5*13)
+		    pincel.fillRect(170, 65+x-y, 5, 5*7)
+		    pincel.fillRect(175, 65+x-y, 5*4, 5*5)
+		    pincel.fillRect(175, 95+x-y, 5*3, 5)
+		    pincel.fillRect(195, 70+x-y, 5, 5*4)
+		    pincel.fillRect(170, 110+x-y, 5, 5)
+		    pincel.fillRect(175, 110+x-y, 5, 5*2)
+		    po++
+		    pov = false
+		}
+
+		if (po >= 4 && pov == true) {
+		    pincel.fillRect(100, 100+x-y, 5, 5*6)
+		    pincel.fillRect(105, 110+x-y, 5, 5*5)
+		    pincel.fillRect(110, 115+x-y, 5, 5*5)
+		    pincel.fillRect(115, 120+x-y, 5, 5*5)
+		    pincel.fillRect(120, 120+x-y, 5, 5*6)
+		    pincel.fillRect(125, 115+x-y, 5, 5*8)
+		    pincel.fillRect(130, 110+x-y, 5, 5*10)
+		    pincel.fillRect(135, 155+x-y, 5, 5)
+		    pincel.fillRect(135, 110+x-y, 5, 5*8)
+		    pincel.fillRect(137, 105+x-y, 8, 5*9)
+		    pincel.fillRect(145, 100+x-y, 5, 5*11)
+		    pincel.fillRect(150, 70+x-y, 5, 5*20)
+		    pincel.fillRect(155, 65+x-y, 5, 5*16)
+		    pincel.fillRect(155, 165+x-y, 5, 5)
+		    pincel.fillRect(160, 65+x-y, 5, 7)
+		    pincel.fillRect(160, 77+x-y, 5, 5*13-2)
+		    pincel.fillRect(165, 65+x-y, 5, 5*13)
+		    pincel.fillRect(170, 65+x-y, 5, 5*7)
+		    pincel.fillRect(175, 65+x-y, 5*4, 5*5)
+		    pincel.fillRect(175, 95+x-y, 5*3, 5)
+		    pincel.fillRect(195, 70+x-y, 5, 5*4)
+		    pincel.fillRect(170, 110+x-y, 5, 5)
+		    pincel.fillRect(175, 110+x-y, 5, 5*2)
+		    po++
+		    pov = false
+
+		}
+
+		console.log(y)
+		ycol = 500 - y
+		   	if (xa >= 110 && xa <= 160 && ycol>= 500) {
+		   		perdeu = true
+				alert("Você perdeu")
+				alert("Você fez " + pontos + " xpontos!")				
+				xa = 1350
+
+				pontos = 0
+			}
+
+
+	    pincel.fillRect(xa, 500, 30, 30)
+
+	    pincel.fillRect(xb, 580, 20, 20)
+
+	    xa = xa - 10
+	    if (xa + 30 == 0) {
+	    	xa = 1350
+	    }
+	    if (po == 6) {
+	    	po = 2
+	    }
+
+	    xb = xb - 15
+	    if (xb + 20 == 5) {
+	    	xb = 1350
+	    }
+	}
+
+	function atualizaPontos() {
+		pincel.clearRect(0, 0, 1350, 150)
+		pincel.fillStyle = 'black'
+		pincel.font = '17px Verdana'
+		pincel.fillText(pontos, 650, 20)
+		if(perdeu == false) {
+			pontos++
+		}
+	}
+
+	function leDoTeclado() {
+			pula = true
+		}
+
+	document.onkeydown = leDoTeclado;
+
+	setInterval(atualizaPontos, 100)
+	
+	setInterval(desenhaDino, 63)
+
+	setInterval(aumentaV, 200)    
+</script>
